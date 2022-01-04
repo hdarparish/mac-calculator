@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <title>Mac Calculator</title>
   </head>
   <body>
@@ -23,7 +24,35 @@
       </section>
 
       <!-- Calculator -->
+      <section>
+        <div class="calculator-grid">
+          <div class="output" data-output>
+            <div class="previous-operand" data-previous-operand></div>
+            <div class="current-operand" data-current-operand></div>
+          </div>
+          <button data-all-clear class="button-dark-gray">AC</button>
+          <button data-delete class="button-dark-gray">DEL</button>
+          <button data-operation class="button-dark-gray">%</button>
+          <button class="button-orange" data-operation>÷</button>
+          <button data-number class="button-light-gray">7</button>
+          <button data-number class="button-light-gray">8</button>
+          <button data-number class="button-light-gray">9</button>
+          <button class="button-orange" data-operation>x</button>
+          <button data-number class="button-light-gray">4</button>
+          <button data-number class="button-light-gray">5</button>
+          <button data-number class="button-light-gray">6</button>
+          <button class="button-orange" data-operation>-</button>
+          <button data-number class="button-light-gray">1</button>
+          <button data-number class="button-light-gray">2</button>
+          <button data-number class="button-light-gray">3</button>
+          <button class="button-orange" data-operation>+</button>
+          <button class="span-two button-light-gray" data-number>0</button>
+          <button data-number class="button-light-gray">.</button>
+          <button class="button-orange" data-equals>=</button>
+        </div>
+      </section>
       <!-- Applications -->
+      <section><h1>Applications</h1></section>
     </main>
   </body>
 </html>
