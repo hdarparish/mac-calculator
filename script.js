@@ -36,7 +36,7 @@ class Calculator {
     const prev = parseFloat(this.previousOperand);
     const current =
       this.operation === "%" ? 1 : parseFloat(this.currentOperand);
-    console.log(prev, current);
+
     if (isNaN(prev) || isNaN(current)) return;
 
     switch (this.operation) {
@@ -65,7 +65,6 @@ class Calculator {
   }
 
   getDisplayNumber(number) {
-    console.log(number);
     const stringNumber = number.toString();
     const integerDigits = parseFloat(stringNumber.split(".")[0]);
     const decimalDigits = stringNumber.split(".")[1];
@@ -98,6 +97,9 @@ class Calculator {
   }
 }
 
+const calculatorSection = document.getElementById("calculator");
+const applicationSection = document.getElementById("applications");
+
 const numberButtons = document.querySelectorAll("[data-number]");
 const operationButton = document.querySelectorAll("[data-operation]");
 const percentageButton = document.querySelector("[data-percentage]");
@@ -110,6 +112,8 @@ const previousOperandTextElement = document.querySelector(
 const currentOperandTextElement = document.querySelector(
   "[data-current-operand]"
 );
+
+const datetimeTextElement = document.querySelector("[data-date]");
 
 const calculator = new Calculator(
   previousOperandTextElement,
@@ -151,3 +155,26 @@ deleteButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
 });
+
+const loadCalculator = () => {
+  updateDateTime();
+  setTimeout(() => {
+    calculatorSection.style.visibility = "visible";
+    calculatorSection.style.animation = "1s ease-out wait2";
+  }, 7000);
+};
+
+//update the date and time every 60secons/1min
+setInterval(() => {
+  updateDateTime();
+}, 60000);
+
+const updateDateTime = () => {
+  const currentDate = new Date();
+  const newDate = currentDate.toDateString().split(" ");
+  newDate.pop();
+  //update the element with date and time, remove the seconds
+  datetimeTextElement.innerText = `${newDate.join(" ")} ${currentDate
+    .toLocaleTimeString()
+    .replace(/(.*)\D\d+/, "$1")}`;
+};
