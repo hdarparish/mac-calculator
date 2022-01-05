@@ -7,24 +7,25 @@
     <script src="script.js" defer></script>
     <title>Mac Calculator</title>
   </head>
-  <body>
+  <body onload="loadCalculator()">
     <main>
       <!-- Header -->
       <section class="header">
         <div class="header-menu">
-          <img src="./img/apple-logo.png" alt="logo" />
+          <div>
+            <img src="./img/apple-logo.png" alt="logo" />
+          </div>
+
           <p>Calculator</p>
           <p>File</p>
           <p>Edit</p>
           <p>View</p>
         </div>
-        <div>
-          <p>Sun Jan 2 4:39 PM</p>
-        </div>
+        <div data-date></div>
       </section>
 
       <!-- Calculator -->
-      <section>
+      <section id="calculator" class="calculator-wrapper">
         <div class="calculator-grid">
           <div class="output" data-output>
             <div class="previous-operand" data-previous-operand></div>
@@ -33,27 +34,27 @@
           <button data-all-clear class="button-dark-gray">AC</button>
           <button data-delete class="button-dark-gray">DEL</button>
           <button data-percentage class="button-dark-gray">%</button>
-          <button class="button-orange" data-operation>÷</button>
+          <button class="button-orange" data-operation :nth-last-col>÷</button>
           <button data-number class="button-light-gray">7</button>
           <button data-number class="button-light-gray">8</button>
           <button data-number class="button-light-gray">9</button>
-          <button class="button-orange" data-operation>x</button>
+          <button class="button-orange" data-operation :nth-last-col>x</button>
           <button data-number class="button-light-gray">4</button>
           <button data-number class="button-light-gray">5</button>
           <button data-number class="button-light-gray">6</button>
-          <button class="button-orange" data-operation>-</button>
+          <button class="button-orange" data-operation :nth-last-col>-</button>
           <button data-number class="button-light-gray">1</button>
           <button data-number class="button-light-gray">2</button>
           <button data-number class="button-light-gray">3</button>
-          <button class="button-orange" data-operation>+</button>
+          <button class="button-orange" data-operation :nth-last-col>+</button>
           <button class="span-two button-light-gray" data-number>0</button>
           <button data-number class="button-light-gray">.</button>
-          <button class="button-orange" data-equals>=</button>
+          <button class="button-orange" data-equals :nth-last-col>=</button>
         </div>
       </section>
       <!-- Applications -->
       <section>
-        <div class="applications">
+        <div id="applications" class="applications-wrapper">
           <img src="./img/pages.png" alt="application" />
           <img src="./img/numbers.png" alt="application" />
           <img src="./img/safari.png" alt="application" />
@@ -62,7 +63,11 @@
           <img src="./img/figma.png" alt="application" />
           <img src="./img/xcode.png" alt="application" />
           <img src="./img/music.png" alt="application" />
-          <img src="./img/calculator.png" alt="application" />
+          <img
+            src="./img/calculator.png"
+            class="calculator-icon"
+            alt="application"
+          />
           <img src="./img/facetime.png" alt="application" />
           <img src="./img/mail.png" alt="application" />
           <img src="./img/photos.png" alt="application" />
