@@ -16,63 +16,70 @@
             <img src="./img/apple-logo.png" alt="logo" />
           </div>
 
-          <p>Calculator</p>
-          <p>File</p>
-          <p>Edit</p>
-          <p>View</p>
+          <p data-menu>Calculator</p>
+          <p data-menu>File</p>
+          <p data-menu>Edit</p>
+          <p data-menu>View</p>
         </div>
         <div data-date></div>
       </section>
 
       <!-- Calculator -->
-      <section id="calculator" class="calculator-wrapper">
-        <div class="calculator-grid">
-          <div class="output" data-output>
-            <div class="previous-operand" data-previous-operand></div>
-            <div class="current-operand" data-current-operand></div>
+      <section class="calculator-container__height">
+        <div id="calculator" class="calculator-wrapper">
+          <div class="calculator-grid">
+            <div class="output" data-output>
+              <div class="previous-operand" data-previous-operand></div>
+              <div class="current-operand" data-current-operand></div>
+            </div>
+            <button data-all-clear class="button-dark-gray">AC</button>
+            <button data-delete class="button-dark-gray">DEL</button>
+            <button data-percentage class="button-dark-gray">%</button>
+            <button class="button-orange" data-operation>÷</button>
+            <button data-number class="button-light-gray">7</button>
+            <button data-number class="button-light-gray">8</button>
+            <button data-number class="button-light-gray">9</button>
+            <button class="button-orange" data-operation>x</button>
+            <button data-number class="button-light-gray">4</button>
+            <button data-number class="button-light-gray">5</button>
+            <button data-number class="button-light-gray">6</button>
+            <button class="button-orange" data-operation>-</button>
+            <button data-number class="button-light-gray">1</button>
+            <button data-number class="button-light-gray">2</button>
+            <button data-number class="button-light-gray">3</button>
+            <button class="button-orange" data-operation>+</button>
+            <button class="span-two button-light-gray" data-number>0</button>
+            <button data-number class="button-light-gray">.</button>
+            <button class="button-orange" data-equals>=</button>
           </div>
-          <button data-all-clear class="button-dark-gray">AC</button>
-          <button data-delete class="button-dark-gray">DEL</button>
-          <button data-percentage class="button-dark-gray">%</button>
-          <button class="button-orange" data-operation :nth-last-col>÷</button>
-          <button data-number class="button-light-gray">7</button>
-          <button data-number class="button-light-gray">8</button>
-          <button data-number class="button-light-gray">9</button>
-          <button class="button-orange" data-operation :nth-last-col>x</button>
-          <button data-number class="button-light-gray">4</button>
-          <button data-number class="button-light-gray">5</button>
-          <button data-number class="button-light-gray">6</button>
-          <button class="button-orange" data-operation :nth-last-col>-</button>
-          <button data-number class="button-light-gray">1</button>
-          <button data-number class="button-light-gray">2</button>
-          <button data-number class="button-light-gray">3</button>
-          <button class="button-orange" data-operation :nth-last-col>+</button>
-          <button class="span-two button-light-gray" data-number>0</button>
-          <button data-number class="button-light-gray">.</button>
-          <button class="button-orange" data-equals :nth-last-col>=</button>
         </div>
       </section>
       <!-- Applications -->
       <section>
         <div id="applications" class="applications-wrapper">
-          <img src="./img/pages.png" alt="application" />
-          <img src="./img/numbers.png" alt="application" />
-          <img src="./img/safari.png" alt="application" />
-          <img src="./img/terminal.png" alt="application" />
-          <img src="./img/github.png" alt="application" />
-          <img src="./img/figma.png" alt="application" />
-          <img src="./img/xcode.png" alt="application" />
-          <img src="./img/music.png" alt="application" />
+          <img src="./img/pages.png" data-pages-image alt="application" />
+          <img src="./img/numbers.png" data-numbers-image alt="application" />
+          <img src="./img/safari.png" data-safari-image alt="application" />
+          <img src="./img/terminal.png" data-terminal-image alt="application" />
+          <img src="./img/github.png" data-github-image alt="application" />
+          <img src="./img/figma.png" data-figma-image alt="application" />
+          <img src="./img/xcode.png" data-xcode-image alt="application" />
+          <img src="./img/music.png" data-music-image alt="application" />
           <img
             src="./img/calculator.png"
             class="calculator-icon"
+            data-calculator-image
             alt="application"
           />
-          <img src="./img/facetime.png" alt="application" />
-          <img src="./img/mail.png" alt="application" />
-          <img src="./img/photos.png" alt="application" />
-          <img src="./img/system.png" alt="application" />
-          <img src="./img/reminders.png" alt="application" />
+          <img src="./img/facetime.png" data-facetime-image alt="application" />
+          <img src="./img/mail.png" data-mail-image alt="application" />
+          <img src="./img/photos.png" data-photos-image alt="application" />
+          <img src="./img/system.png" data-system-image alt="application" />
+          <img
+            src="./img/reminders.png"
+            data-reminders-image
+            alt="application"
+          />
         </div>
       </section>
     </main>
