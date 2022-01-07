@@ -116,6 +116,10 @@ const currentOperandTextElement = document.querySelector(
 
 const datetimeTextElement = document.querySelector("[data-date]");
 const datetimeMobileTextElement = document.querySelector("[data-date-mobile]");
+const calculatorIcon = document.querySelector("[data-calculator-image]");
+
+const mobileSize = window.matchMedia("screen and (max-width: 560px)");
+let calculatorAnimationEnd = false;
 
 const calculator = new Calculator(
   previousOperandTextElement,
@@ -158,44 +162,46 @@ deleteButton.addEventListener("click", () => {
   calculator.updateDisplay();
 });
 
-const mobileSize = window.matchMedia("screen and (max-width: 560px)");
-const desktopSize = window.matchMedia("screen and (min-width: 560px)");
+//check if the calculator icon animation has ended and display the calculator app
+calculatorIcon.addEventListener("animationend", () => {
+  calculatorAnimationEnd = true;
+  calculatorSection.style.visibility = "visible";
+  calculatorSection.style.animation = "1s ease-out waitForCalculator";
 
-const mobileView = (e) => {
-  if (mobileSize.matches) {
+  mobileView();
+});
+
+const mobileView = () => {
+  //check if the calculator icon has animation, to prevent triggering animation
+  calculatorIcon.style.animation =
+    calculatorSection.style.visibility === "visible"
+      ? ""
+      : "1s linear 1s 6 alternate popUp";
+
+  //if it is mobile width, change the background and stop displaying the applications icons
+  if (mobileSize.matches && calculatorAnimationEnd) {
     applicationSection.style.display = "none";
     document.querySelector("body").style.background = "#000";
   } else {
+    //display the applications icons and calculator menu
     applicationSection.style.display = "flex";
     document.querySelector("body").style.background = "";
+    menuItems.forEach((item) => {
+      item.style.visibility = "visible";
+    });
   }
 };
 
+//add even listener for mobile screen size
 mobileSize.addEventListener("change", mobileView);
 
+//on load check the screen size and update the date & time
 const loadCalculator = () => {
-  /*   if (!calculatorSection.visibility) {
-    document.querySelector("[data-calculator-image]").style.animation =
-      "1s linear 1s 6 alternate popUp";
-  } */
-  /*   document.querySelector("[data-calculator-image]").style.animation =
-    calculatorSection.style.visibility ? "" : "1s linear 1s 6 alternate popUp"; */
+  mobileView();
   updateDateTime();
-  setTimeout(() => {
-    /*     applicationSection.style.display = "none"; */
-    calculatorSection.style.visibility = "visible";
-    calculatorSection.style.animation = "1s ease-out waitForCalculator";
-    if (desktopSize.matches) {
-      menuItems.forEach((item) => {
-        item.style.visibility = "visible";
-      });
-    }
-    mobileView();
-    /*     document.querySelector("body").style.background = "#000"; */
-  }, 7000);
 };
 
-//update the date and time every 60secons/1min
+//update the date and time every 60secons / 1min
 setInterval(() => {
   updateDateTime();
 }, 60000);

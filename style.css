@@ -177,7 +177,7 @@ main {
 }
 
 .calculator-icon {
-  animation: 1s linear 1s 6 alternate popUp;
+  /* animation: 1s linear 1s 6 alternate popUp */
 }
 
 .hide {
