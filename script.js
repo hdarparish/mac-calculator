@@ -115,6 +115,7 @@ const currentOperandTextElement = document.querySelector(
 );
 
 const datetimeTextElement = document.querySelector("[data-date]");
+const datetimeMobileTextElement = document.querySelector("[data-date-mobile]");
 
 const calculator = new Calculator(
   previousOperandTextElement,
@@ -157,14 +158,40 @@ deleteButton.addEventListener("click", () => {
   calculator.updateDisplay();
 });
 
+const mobileSize = window.matchMedia("screen and (max-width: 560px)");
+const desktopSize = window.matchMedia("screen and (min-width: 560px)");
+
+const mobileView = (e) => {
+  if (mobileSize.matches) {
+    applicationSection.style.display = "none";
+    document.querySelector("body").style.background = "#000";
+  } else {
+    applicationSection.style.display = "flex";
+    document.querySelector("body").style.background = "";
+  }
+};
+
+mobileSize.addEventListener("change", mobileView);
+
 const loadCalculator = () => {
+  /*   if (!calculatorSection.visibility) {
+    document.querySelector("[data-calculator-image]").style.animation =
+      "1s linear 1s 6 alternate popUp";
+  } */
+  /*   document.querySelector("[data-calculator-image]").style.animation =
+    calculatorSection.style.visibility ? "" : "1s linear 1s 6 alternate popUp"; */
   updateDateTime();
   setTimeout(() => {
+    /*     applicationSection.style.display = "none"; */
     calculatorSection.style.visibility = "visible";
-    calculatorSection.style.animation = "1s ease-out wait2";
-    menuItems.forEach((item) => {
-      item.style.visibility = "visible";
-    });
+    calculatorSection.style.animation = "1s ease-out waitForCalculator";
+    if (desktopSize.matches) {
+      menuItems.forEach((item) => {
+        item.style.visibility = "visible";
+      });
+    }
+    mobileView();
+    /*     document.querySelector("body").style.background = "#000"; */
   }, 7000);
 };
 
@@ -181,80 +208,7 @@ const updateDateTime = () => {
   datetimeTextElement.innerText = `${newDate.join(" ")} ${currentDate
     .toLocaleTimeString()
     .replace(/(.*)\D\d+/, "$1")}`;
+  datetimeMobileTextElement.innerText = `${currentDate
+    .toLocaleTimeString()
+    .replace(/(.*)\D\d+/, "$1")}`;
 };
-
-/* const desktopWidth = window.matchMedia("(max-width: 1300px)");
-const smallDesktopWidth = window.matchMedia("(max-width: 1070px)");
-const tabletWidth = window.matchMedia("(max-width: 810px)");
-const mobileWidth = window.matchMedia("(max-width: 560px)");
-
-const pagesImage = document.querySelector("[data-pages-image]");
-const numbersImage = document.querySelector("[data-numbers-image]");
-const safariImage = document.querySelector("[data-safari-image]");
-const xcodeImage = document.querySelector("[data-xcode-image]");
-const musiclImage = document.querySelector("[data-music-image]");
-const facetimeImage = document.querySelector("[data-facetime-image]");
-const mailImage = document.querySelector("[data-mail-image]");
-const photosImage = document.querySelector("[data-photos-image]");
-const systemImage = document.querySelector("[data-system-image]");
-const remindersImage = document.querySelector("[data-reminders-image]");
-
-desktopWidth.addEventListener("change", (e) => {
-  if (e.matches) {
-    remindersImage.style.display = "none";
-    pagesImage.style.display = "none";
-    applicationSection.style.maxWidth = "1060px";
-    //   console.log(document.querySelector("[data-reminders-image]"));
-    //document.querySelector(".calculator-icon").style.display = "none"; 
-  } else {
-    document.querySelector(".calculator-icon").style.display = "";
-    remindersImage.style.display = "";
-    pagesImage.style.display = "";
-    applicationSection.style.maxWidth = "";
-  }
-});
-
-smallDesktopWidth.addEventListener("change", (e) => {
-  if (e.matches) {
-    numbersImage.style.display = "none";
-    systemImage.style.display = "none";
-    mailImage.style.display = "none";
-    applicationSection.style.maxWidth = "815px";
-
-  } else {
-    document.querySelector(".calculator-icon").style.display = "";
-    numbersImage.style.display = "";
-    systemImage.style.display = "";
-    mailImage.style.display = "";
-    applicationSection.style.maxWidth = "";
-  }
-});
-
-tabletWidth.addEventListener("change", (e) => {
-  if (e.matches) {
-    safariImage.style.display = "none";
-    facetimeImage.style.display = "none";
-    musiclImage.style.display = "none";
-    applicationSection.style.maxWidth = "570px";
-
-  } else {
-    document.querySelector(".calculator-icon").style.display = "";
-    safariImage.style.display = "";
-    facetimeImage.style.display = "";
-    musiclImage.style.display = "";
-    applicationSection.style.maxWidth = "";
-  }
-});
-mobileWidth.addEventListener("change", (e) => {
-  if (e.matches) {
-    photosImage.style.display = "none";
-    xcodeImage.style.display = "none";
-    applicationSection.style.maxWidth = "390px";
-  } else {
-    document.querySelector(".calculator-icon").style.display = "";
-    photosImage.style.display = "";
-    xcodeImage.style.display = "";
-    applicationSection.style.maxWidth = "";
-  }
-});
- */
